@@ -30,13 +30,12 @@
 		<a href="#account" class="fancybox block">Авторизация</a>
 		<a href="#forgot" class="fancybox block">Восстановить пароль</a>
 	</form>
-	<form id="forgot" class="modal_form" action="/forgot" method="POST">
+	<form id="forgot" class="modal_form" action="javascript:void(null);" onsubmit="verification('#forgot','/forgot')">
 		<div class="logo"><img src="<?php echo PATH_TPL ?>/img/logo.png" alt=""/></div>
 		<label for="email3">
 			<input id="email3" type="email" name="email" required="" placeholder="Адрес электронной почты"/>
 		</label>
 		<button>Восстановить</button>
-		<div class="result"></div>
 		<a href="#account" class="fancybox block">Войти в аккаунт</a>
 		<a href="#registr" class="fancybox block">Зарегистрироваться</a>
 	</form>

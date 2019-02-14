@@ -6,6 +6,7 @@ return Array(
 	"^registr$" =>"account/registr",
 	"^forgot$" =>"account/forgot",
 	"^confirm(\/$|\?.*$|$)$" =>"account/confirm",
+	"^password(\/$|\?.*$|$)$" =>"account/password",
 	"^entry$" =>"account/entry",
 	"^exit$" =>"account/exit",
 	"^verification(\/$|\?.*$|$)" =>"account/verification",

@@ -35,8 +35,8 @@ class Account extends Model{
 				$mail = new Mailer($registr);
 				$mail->confirm($this->db->lastInsertId(),$email);
 				$result = Array(
-						"success" => "Регистрация прошла успешно!<br/>На ваш email отправлено письмо с подтверждением учётной записи."
-					);
+					"success" => "Регистрация прошла успешно!<br/>На ваш email отправлено письмо с подтверждением учётной записи."
+				);
 				echo json_encode($result);
 			}
 		}
@@ -55,7 +55,54 @@ class Account extends Model{
 	}
 
 	public function forgot() {
-		
+		$email = $this->defenseStr($_POST['email']);
+		$user = $this->db->query("SELECT id FROM user WHERE email = '$email'")->fetchColumn();
+		if(!$user) {
+			$result = Array(
+				"error" => "Пользователя с таким email не существует, пройдите регистрацию."
+			);
+			echo json_encode($result);
+			return $user;
+		} else {
+			$mail = new Mailer();
+			$mail->forgot($user,$email);
+			$result = Array(
+				"success" => "Ссылка на восстановление пароля отправлена вам на электронную почту."
+			);
+			echo json_encode($result);
+			return $user;
+		}
+	}
+
+	public function password() {
+		if(!empty($_POST)) {
+			$id  = (int) $_POST['id'];
+			$email  = $this->defenseStr($_POST['email']);
+			$password = $this->defenseStr($_POST['password']);
+			$passwordRepeat = $this->defenseStr($_POST['password-repeat']);
+			if($password != $passwordRepeat) {
+				$result = Array(
+					"error" => "Пароли не совпадают."
+				);
+				echo json_encode($result);
+				return false;
+			} else {
+				$password = password_hash($password,PASSWORD_DEFAULT);
+				$this->db->exec("UPDATE user SET `password` = '$password' WHERE email = '$email' AND id = $id");
+				$result = Array(
+					"success" => "Пароль изменён."
+				);
+				echo json_encode($result);
+			}
+			return true;
+		}
+		if(!empty($_GET['id']) && !empty($_GET['email'])) {
+			$data = Array(
+				'id' 	=> $this->defenseStr($_GET['id']),
+				'email' => $this->defenseStr($_GET['email'])
+			);
+			return $data;
+		}
 	}
 
 	public function entry() {
@@ -78,7 +125,7 @@ class Account extends Model{
 				$user = $this->db->query("SELECT email,password,active FROM user WHERE email = '$email'")->fetch(PDO::FETCH_ASSOC);
 				if(!$user) {
 					$result = Array(
-						"error" => "Пользователя с таким email не существует, пройдите регистрацию"
+						"error" => "Пользователя с таким email не существует, пройдите регистрацию."
 					);
 					echo json_encode($result);
 					return $user;
@@ -105,7 +152,7 @@ class Account extends Model{
 				case 'registr':
 				$user = $this->db->query("SELECT id FROM user WHERE email = '$email'")->fetch(PDO::FETCH_BOUND);
 				$result = Array(
-					"error" => "Пользователь с таким email уже существует"
+					"error" => "Пользователь с таким email уже существует."
 				);
 				if($user) {
 					echo json_encode($result);
@@ -113,7 +160,7 @@ class Account extends Model{
 				}
 				if($password != $passwordRepeat) {
 					$result = Array(
-						"error" => "Пароли не совпадают"
+						"error" => "Пароли не совпадают."
 					);
 					echo json_encode($result);
 					return false;

@@ -32,6 +32,11 @@ class Account extends Controller{
 		$this->model->confirm();
 	}
 
+	public function password() {
+		$data = $this->model->password();
+		$this->view->output("password",$data);
+	}
+
 	public function exit() {
 		$this->model->exit();
 	}
