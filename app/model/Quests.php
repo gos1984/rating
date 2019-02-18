@@ -1,6 +1,6 @@
 <?php
 namespace app\model;
-use core\Model;
+use core\{Model,Mailer};
 use core\traits\{Defense,Questions, Answers, Modal,Company,Treatment,Type,Results,ResultsInPDF};
 use PDO;
 use Mpdf\Mpdf;
@@ -36,8 +36,8 @@ class Quests extends Model{
 		return $quests;
 	}
 
-	public function sendResults() {
-		if(!empty($_POST['company'])) {
+	public function setResult() {
+		if(!empty($_POST)) {
 			$company		= $this->defenseStr($_POST['company']);
 			$lastname		= $this->defenseStr($_POST['lastname']);
 			$name			= $this->defenseStr($_POST['name']);
@@ -69,7 +69,9 @@ class Quests extends Model{
 			if(!$findUserResult->fetch(PDO::FETCH_BOUND)) {
 				$score = $this->getResultScore($result['result']);
 				$this->db->exec("INSERT result(user,result,description) VALUES($id,$score,'$resultJson')");
+				$this->sendResultPDF($id);
 			};
+
 		}
 	}
 
@@ -89,14 +91,22 @@ class Quests extends Model{
 		return $score;
 	}
 
-	public function getResultOutputPDF() {
+	public function sendResultPDF() {
+		$id = $_SESSION['id'];
 		$data = $this->getResultOutputForPDF($_SESSION['id']);
-		$mpdf = new Mpdf();
-		ob_start();
-		include(ROOT."/app/view/quests/pdf.php");
-		$content = ob_get_clean();
-		$mpdf->WriteHTML($content);
-		$mpdf->Output();
+		if(!empty($data)) {
+			$mpdf = new Mpdf();
+			ob_start();
+			include(ROOT."/app/view/quests/pdf.php");
+			$content = ob_get_clean();
+			$mpdf->WriteHTML($content);
+			$file = $mpdf->Output('OrderDetails.pdf','S');
+			$email = $data['email'];
+			$name = $data['name'];
+			$patron = $data['patron'];
+			$mail = new Mailer();
+			$mail->sendResult($id,$email,$name,$patron,$file);
+		}
 	}
 }
 

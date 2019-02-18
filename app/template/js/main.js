@@ -30,6 +30,28 @@ function verification(form, url, href = null) {
 });
 }
 
+function countRating() {
+    $.ajax({
+        type: 'POST',
+        url: '/count',
+        dataType: 'text',
+        success: function(data) {
+            console.log(data);
+            var num = parseInt(data),
+                len = (num).toString(),
+                block = '<span class="count">0</span>',
+                count = '';
+            for (var i = 0; i < len.length; i++) {
+                count += '<span class="count">' + len[i] + '</span>';
+            }
+            $('.quan_rating').html(num < 10 ? block + block + count : (num < 100 ? block + count : count));
+        },
+        error: function(xhr, str) {
+            console.log('Возникла ошибка: ' + xhr.responseCode);
+        }
+    });
+}
+
 /*function call(form, file) {
     var msg = $(form).serialize();
     $('body').ajaxSend(loading());
@@ -56,27 +78,6 @@ function verification(form, url, href = null) {
         },
         error: function(xhr, str) {
             alert('Возникла ошибка: ' + xhr.responseCode);
-        }
-    });
-}
-
-function countRating() {
-    $.ajax({
-        type: 'POST',
-        url: '/model/count.php',
-        dataType: 'text',
-        success: function(data) {
-            var num = parseInt(data),
-                len = (num).toString(),
-                block = '<span class="count">0</span>',
-                count = '';
-            for (var i = 0; i < len.length; i++) {
-                count += '<span class="count">' + len[i] + '</span>';
-            }
-            $('.quan_rating').html(num < 10 ? block + block + count : (num < 100 ? block + count : count));
-        },
-        error: function(xhr, str) {
-            console.log('Возникла ошибка: ' + xhr.responseCode);
         }
     });
 }
@@ -168,10 +169,6 @@ $('.reset').click(function() {
     $('.table-row').attr('style', '');
     $('.select').removeClass('selected');
     $(this).slideUp();
-});
-
-$('.button_top').click(function() {
-
 });
 
 $(document).mouseup(function(e) {
@@ -376,11 +373,12 @@ $(document).ready(function() {
             'scrollTop': $($(this).attr('href')).offset().top
         }, 600);
     });
+
     $(window).scroll(function() {
         if ($(this).scrollTop() > 10) {
-            $('#header').addClass('fixed');
+            $('.home').addClass('fixed');
         } else {
-            $('#header').removeClass('fixed');
+            $('.home').removeClass('fixed');
         } // header fixed
 
         if ($('#results').is(':hidden')) {
@@ -421,21 +419,27 @@ $(document).ready(function() {
     });
 
     var timer = setInterval(function() {
-        var date = new Residue(2018, 05, 18, 18);
-        $('.time.day').text(date.days < 10 ? '0' + date.days : date.days);
-        $('.time.hours').text(date.hours < 10 ? '0' + date.hours : date.hours);
-        $('.time.minuts').text(date.minuts < 10 ? '0' + date.minuts : date.minuts);
-        $('.time.seconds').text(date.seconds < 10 ? '0' + date.seconds : date.seconds);
+        var date = new Residue(2019, 01, 15, 13);
+        function showTime(element,unit) {
+            return element.text(unit < 10 ? '0' + unit : unit);
+        }
+        showTime($('.time.day'),date.days);
+        showTime($('.time.hours'),date.hours);
+        showTime($('.time.minuts'),date.minuts);
+        showTime($('.time.seconds'),date.seconds);
         if (date.days < 1 && date.hours < 1 && date.minuts < 1 && date.seconds < 1) {
             clearInterval(timer);
+            $('.time').each(function(i, el) {
+                $(el).text('00');
+            });
         }
-    }, 1000);
+    }, 1000); // time before public
 
-    if ($('.quan_rating').is(':visible')) {
-        //countRating();
+   if ($('.quan_rating').is(':visible')) {
+        countRating();
 
         var countR = setInterval(function() {
-            var date = new Residue(2018, 05, 17, 17);
+            var date = new Residue(2019, 02, 17, 17);
             countRating();
             if (date.days < 1 && date.hours < 1 && date.minuts < 1 && date.seconds < 1) {
                 clearInterval(countR);

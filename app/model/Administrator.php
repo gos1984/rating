@@ -102,7 +102,7 @@ class Administrator extends Model{
 				'result_id' => $row['result_id']
 			);
 		}
-		return $users;
+		return isset($users) ? $users : null;
 	}
 
 	public function setModal() {

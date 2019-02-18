@@ -32,8 +32,8 @@ class Account extends Model{
 				$password = password_hash($password,PASSWORD_DEFAULT);
 				$ip = $_SERVER['REMOTE_ADDR'];
 				$registr = $this->db->exec("INSERT INTO user(email,password,ip,active) VALUES('$email','$password','$ip',0)");
-				$mail = new Mailer($registr);
-				$mail->confirm($this->db->lastInsertId(),$email);
+				$mail = new Mailer();
+				$mail->sendConfirm($this->db->lastInsertId(),$email);
 				$result = Array(
 					"success" => "Регистрация прошла успешно!<br/>На ваш email отправлено письмо с подтверждением учётной записи."
 				);
@@ -65,7 +65,7 @@ class Account extends Model{
 			return $user;
 		} else {
 			$mail = new Mailer();
-			$mail->forgot($user,$email);
+			$mail->sendForgot($user,$email);
 			$result = Array(
 				"success" => "Ссылка на восстановление пароля отправлена вам на электронную почту."
 			);

@@ -31,12 +31,9 @@ class Quests extends Controller{
 	}
 
 	public function results() {
-		$this->model->sendResults();
-		$this->pdf();
-	}
-
-	public function pdf() {
-		$this->model->getResultOutputPDF();
+		header("Location: /quests", true, 301);
+		$this->model->setResult();
+		exit();
 	}
 }
 

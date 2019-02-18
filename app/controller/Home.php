@@ -11,7 +11,17 @@ class Home extends Controller{
 	}
 
 	public function index() {
-		$this->view->output("index");
+		$data['header'] = 'home';
+		$this->view->output("index",$data);
+	}
+
+	public function count() {
+		echo $this->model->getQountResult();
+	}
+
+	public function total() {
+		$data = $this->model->getTotal();
+		$this->view->output("total",$data);
 	}
 }
 

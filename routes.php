@@ -1,6 +1,8 @@
 <?php
 return Array(
 	"^(/|)$" => "home/index",
+	"^count(/|)$" => "home/count",
+	"^total\/(\d{4})" => "home/total/$1",
 	"^account$" =>"account/index",
 	"^auth$" =>"account/auth",
 	"^registr$" =>"account/registr",

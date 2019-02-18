@@ -11840,11 +11840,13 @@ form {
 }
 
 form .logo {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 form .logo img {
   width: 100%;
+  max-width: 200px;
 }
 
 form button {
@@ -12925,6 +12927,19 @@ hr {
   height: auto;
 }
 
+#header.fixed .logo a {
+  max-width: 100px;
+}
+
+#header .logo a {
+  display: inline-block;
+  max-width: 120px;
+}
+
+#header .logo a img {
+  width: 100%;
+}
+
 #sec1 {
   height: 100vh;
   background: url("../../template/img/home.jpg") no-repeat center 35%;
@@ -13025,7 +13040,8 @@ hr {
 }
 
 #sec3 .content span.count {
-  width: 50px;
+  display: inline-block;
+  width: auto;
   padding: 10px;
   margin: 10px 5px;
   border: 2px solid #ffffff;
