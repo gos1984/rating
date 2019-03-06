@@ -4,7 +4,7 @@
 			<div class="col-md-4">
 				<div class="logo"><a href="https://mrororr.ru/"><img src="<?php echo PATH_TPL ?>img/logo-white.png" alt=""/></a></div>
 				<div class="logo"><a href="http://medradiology.moscow/"><img src="<?php echo PATH_TPL ?>img/logo-radiology-white.png" alt=""/></a></div>
-				<div class="copyright"><span>© 2018 Московское Региональное Отделение Российского Общества Рентгенологов и Радиологов</span></div>
+				<div class="copyright"><span>© <?php echo date("Y") ?> Московское Региональное Отделение Российского Общества Рентгенологов и Радиологов</span></div>
 			</div>
 			<div class="col-md-4"></div>
 			<div class="col-md-4">

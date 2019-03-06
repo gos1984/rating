@@ -21,7 +21,13 @@ class Home extends Controller{
 
 	public function total() {
 		$data = $this->model->getTotal();
+		$data['header'] = 'home';
 		$this->view->output("total",$data);
+	}
+
+	public function experts() {
+		$data['header'] = 'home';
+		$this->view->output("experts",$data);
 	}
 }
 

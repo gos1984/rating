@@ -22,6 +22,7 @@
 					<div class="th">Баллы<br/>(кол-во)</div>
 					<div class="th">Родительский<br/>вопрос (№)</div>
 					<div class="th">Дочерний<br/>вопрос (№)</div>
+					<div class="th">Зависимость</div>
 				</div>
 				<form class="tr form-group" action="/administrator/edit/answers?action=add" method="POST">
 					<div class="td"></div>
@@ -45,6 +46,7 @@
 					<div class="td"><div class="td"><input name="score" type="number" class="form-control align-middle"></div></div>
 					<div class="td"><div class="td"><input name="manager" type="number" class="form-control align-middle"></div></div>
 					<div class="td"><div class="td"><input name="cond" type="number" class="form-control align-middle"></div></div>
+					<div class="td"><div class="td"><input name="dependency" type="number" class="form-control align-middle"></div></div>
 					<div class="td"><button class="btn btn-success">Добавить</button></div>
 					<div class="td"></div>
 				</form>
@@ -69,11 +71,13 @@
 									<?php endforeach ?>
 								</select>
 							</div>
-							<div class="td"><input type="number" class="form-control align-middle" name="score"  value="<?php echo $answer['score'] ?>">
+							<div class="td"><input type="number" class="form-control align-middle" name="score"  value="<?php echo $answer['score'] ?>" step="0.1">
 							</div>
 							<div class="td"><input type="number" class="form-control align-middle" min="0" name="manager"  value="<?php echo $answer['manager'] ?>">
 							</div>
 							<div class="td"><input type="number" class="form-control align-middle" min="0" name="cond"  value="<?php echo $answer['cond'] ?>">
+							</div>
+							<div class="td"><input type="number" class="form-control align-middle" min="0" name="dependency"  value="<?php echo $answer['dependency'] ?>">
 							</div>
 							<div class="td"><button class="btn btn-success">Сохранить</button>
 							</div>

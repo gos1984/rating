@@ -7,7 +7,7 @@ class Page404 extends Model {
 		parent::__construct();
 	}
 	public function getIndex() {
-		return true;
+		header("refresh:5;url=/");
 	}
 }
 

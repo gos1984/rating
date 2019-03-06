@@ -23,14 +23,27 @@ class Quests extends Model{
 				'type' => $this->getType(),
 				'modal' => $this->getModal()
 			);
+			asort($quests['modal']);
 		}
 		return $quests;
 	}
 
 	public function getJsonQuestions() {
-		$quests = $this->getQuestions();
-		foreach ($quests as $q => $quest) {
-			$quests[$q]['answers'] = $this->getAnswers($q,'question_id');
+
+		$quests['modal'] = $this->getModal();
+		$quests['modal'][0] = "Общие вопросы";
+		foreach ($quests['modal'] as $m => $modal) {
+			$query = $m != 0 ? " =$m" : "IS NULL";
+			$q = $this->db->query("SELECT * FROM `question` WHERE modal $query");
+			while ($row = $q->fetch(PDO::FETCH_ASSOC)) {
+				$quests['questions'][$m][$row['id']] = Array(
+					'name' => $row['name'],
+					'modal' => $row['modal'],
+					'category' => $row['category'],
+					'num' => $row['num']
+				);
+				$quests['questions'][$m][$row['id']]['answers'] = $this->getAnswers($row['id'],'question_id');
+			}
 		}
 		$quests = json_encode($quests);
 		return $quests;

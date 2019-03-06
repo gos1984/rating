@@ -17,15 +17,16 @@
   <header id="header" <?php echo !empty($data['header']) ? "class=\"{$data['header']}\"" : "" ?>>
     <div class="container-fluid">
       <div class="row justify-content-between align-items-center">
-        <div class="col-6 col-md-2">
+        <div class="col-4 col-md-2 order-1">
           <div class="logo"><a href="/"><img src="<?php echo PATH_TPL ?>/img/logo.png" alt=""></a></div>
         </div>
-        <div class="col-12 col-md-8">
+        <div class="col-4 col-md-8 order-3 order-md-2">
             <nav class="main-menu">
              <ul>
                <li><a href="<?php echo (URL == "/") ? '#sec2' : '/#sec2' ?>">О рейтинге</a></li>
                <li><a href="<?php echo (URL == "/") ? '#sec4' : '/#sec4' ?>">Как принять участие</a></li>
-               <li><a href="<?php echo (URL == "/") ? '#sec5' : '/#sec5' ?>">Методология</a></li>
+                <li><a href="<?php echo (URL == "/experts") ? '#experts' : '/experts#experts' ?>">Эксперты</a></li>
+               <li><a href="<?php echo (URL == "/" || URL == "/experts") ? '#sec5' : '/#sec5' ?>">Методология</a></li>
                <li><a href="/total/2018">Итоги 2018</a></li>
                <?php if (!empty($_SESSION['login'])): ?>
                  <li><a href="/quests">Анкета</a></li>
@@ -34,7 +35,7 @@
            </nav>
          <div class="nav_mobile"><i></i><i></i><i></i></div>
        </div>
-       <div class="col-6 col-md-2 right">
+       <div class="col-4 col-md-2 right order-2 order-md-3">
 
         <div class="account">
           <?php if (!empty($_SESSION['login'])): ?>

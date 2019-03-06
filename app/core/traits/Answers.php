@@ -14,7 +14,8 @@ trait Answers{
 					'type' => $row['type'],
 					'score' => $row['score'],
 					'manager' => $row['manager'],
-					'cond' => $row['cond']
+					'cond' => $row['cond'],
+					'dependency' => $row['dependency']
 			);
 		}
 		return $id > 0 && $type == 'id' ? $answers[$id] : $answers;

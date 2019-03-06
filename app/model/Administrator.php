@@ -187,14 +187,14 @@ class Administrator extends Model{
 		$score 		= !empty($_POST['score']) ? $_POST['score'] : 0;
 		$manager 		= !empty($_POST['manager']) ? $_POST['manager'] : 'NULL';
 		$cond 		= !empty($_POST['cond']) ? $_POST['cond'] : 'NULL';
+		$dependency 		= !empty($_POST['dependency']) ? $_POST['dependency'] : 'NULL';
 		switch($_GET['action']) {
 			case 'edit':
-			
-			$edit 		= $this->db->exec("UPDATE answer SET name = '$name', question_id = $question, type = '$type', score = $score, manager = $manager, cond = $cond WHERE id = $id");
+			$edit 		= $this->db->exec("UPDATE answer SET name = '$name', question_id = $question, type = '$type', score = '$score', manager = $manager, cond = $cond, dependency = $dependency WHERE id = $id");
 			return $edit;
 			break;
 			case 'add':
-			$add = $this->db->exec("INSERT INTO answer(name,question_id,type,score,manager, cond) VALUES('$name',$question,'$type',$score,$manager, $cond)");
+			$add = $this->db->exec("INSERT INTO answer(name,question_id,type,score,manager, cond, dependency) VALUES('$name',$question,'$type','$score',$manager, $cond, $dependency)");
 			return $add;
 			break;
 			case 'remove':

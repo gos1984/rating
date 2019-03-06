@@ -36,14 +36,15 @@
 </head>
 <body>
 	<section id="page404">
-		<h1>404</h1>
+		<h2>Ошибка 404</h2>
+		<div class="image">
+			<img src="<?php echo PATH_TPL ?>img/404.jpg" alt="">
+		</div>
 		<div class="center">
 			<p>Такой страницы не существует, через несколько секунд вы будете перенаправлены на главную страницу!</p>
-			<a href="/auth" class="button">Не ждать</a>
+			<a href="/" class="button">Не ждать</a>
 		</div>
-		<div class="image">
-			<img src="/app/template/img/404.jpg" alt="">
-		</div>
+		
 	</section>
 	<footer>
 

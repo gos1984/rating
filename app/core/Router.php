@@ -34,12 +34,10 @@ class Router {
 				}
 				$quan++;
 			}
-
-			/*if($quan === 0) {
-				$classController = new controller\Page404();
-				var_dump($classController);
-				$classController->index();
-			}*/
+		}
+		if($quan === 0) {
+			$classController = new controller\Page404();
+			$classController->index();
 		}
 	}
 }

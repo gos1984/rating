@@ -11,14 +11,19 @@ class Account extends Model{
 	}
 
 	public function auth() {
-		$email  = $this->defenseStr($_POST['email']);
-		$password = $this->defenseStr($_POST['password']);
-		if($this->verification('auth',$email,$password)) {
-			$user = $this->db->query("SELECT * FROM user WHERE email = '$email'")->fetch(PDO::FETCH_ASSOC);
-			$_SESSION = Array(
-				'id' => $user['id'],
-				'login' => $user['email']
-			);
+		if(!empty($_POST)) {
+			$email  = $this->defenseStr($_POST['email']);
+			$password = $this->defenseStr($_POST['password']);
+			if($this->verification('auth',$email,$password)) {
+				$user = $this->db->query("SELECT * FROM user WHERE email = '$email'")->fetch(PDO::FETCH_ASSOC);
+				$_SESSION = Array(
+					'id' => $user['id'],
+					'login' => $user['email']
+				);
+			}
+		} else {
+			header("Location: /", true, 301);
+			exit();
 		}
 	}
 

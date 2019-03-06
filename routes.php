@@ -2,7 +2,9 @@
 return Array(
 	"^(/|)$" => "home/index",
 	"^count(/|)$" => "home/count",
-	"^total\/(\d{4})" => "home/total/$1",
+	"^total\/(2018)" => "home/total/$1",
+	"^experts$" => "home/experts",
+	"^404$" => "page404/index",
 	"^account$" =>"account/index",
 	"^auth$" =>"account/auth",
 	"^registr$" =>"account/registr",
