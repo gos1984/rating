@@ -64,6 +64,10 @@ class Administrator extends Controller{
 			$this->view->output("form");
 		}
 	}
+
+	public function xls() {
+		$this->model->getFile();
+	}
 }
 
 ?>

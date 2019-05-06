@@ -22,7 +22,11 @@ class Home extends Controller{
 	public function total() {
 		$data = $this->model->getTotal();
 		$data['header'] = 'home';
-		$this->view->output("total",$data);
+		if ($data['year'] == 2019) {
+$this->view->output("total1",$data); 
+} else { 
+$this->view->output("total",$data);
+}
 	}
 
 	public function experts() {

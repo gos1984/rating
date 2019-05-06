@@ -105,8 +105,10 @@ class Quests extends Model{
 	}
 
 	public function sendResultPDF() {
+
 		$id = $_SESSION['id'];
 		$data = $this->getResultOutputForPDF($_SESSION['id']);
+
 		if(!empty($data)) {
 			$mpdf = new Mpdf();
 			ob_start();

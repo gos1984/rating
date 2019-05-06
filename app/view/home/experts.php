@@ -104,10 +104,11 @@
 				<div class="content"></div>
 				<h2>Примите участие в рейтинге отделений лучевой диагностики<br/>прямо сейчас!</h2>
 				<p class="center">Заявите о себе и займите свое место среди лучших!</p>
+				<span class="button" style="max-width: 500px">Принять участие вы сможете в 2020 году</span>
 				<?php if (!empty($_SESSION['id'])): ?>
-					<a href="/quests" class="button">Принять участие</a>
+					<!-- <a href="/quests" class="button">Принять участие</a> -->
 					<?php else: ?>
-						<a href="#account" class="fancybox button">Принять участие</a>
+						<!-- <a href="#account" class="fancybox button">Принять участие</a> -->
 					<?php endif ?>
 				</div>
 			</div>

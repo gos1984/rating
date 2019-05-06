@@ -46,10 +46,10 @@
 				<td><strong>Вид лечения: </strong></td>
 				<td><?php echo $data['treatment']?></td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td><strong>Результат: </strong></td>
-				<td><?php echo $data['result']?></td>
-			</tr>
+				<td><?php //echo $data['result']?></td>
+			</tr> -->
 		</table>
 	</div>
 	<div class="steps">

@@ -11,8 +11,8 @@ class Mailer {
 		$this->mail->Host = 'mail.nic.ru';
 		$this->mail->SMTPAuth = true;
 		$this->mail->Username = 'info@topld.ru';
-		$this->mail->Password = 'HflbjkjubzVjcrds1';
-		$this->mail->SMTPSecure = 'ssl';                           
+		$this->mail->Password = 'da3614f0a9A';
+		$this->mail->SMTPSecure = 'ssl';
 		$this->mail->Port = 465;
 	}
 

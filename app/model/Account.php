@@ -175,6 +175,18 @@ class Account extends Model{
 			}
 		}
 	}
+
+	public function mass() {
+		header("Location: /", true, 301);
+		exit();
+		/*$m = $this->db->query("SELECT id, email FROM user WHERE active = 0");
+		while($row = $m->fetch(PDO::FETCH_ASSOC)) {
+			$mail = new Mailer();
+			$mail->sendConfirm($row['id'],$row['email']);
+			sleep(1);
+		}
+		echo "Отправка завершена";*/
+	}
 }
 
 ?>

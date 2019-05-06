@@ -4,6 +4,7 @@ use core\Model;
 use PDO;
 use Mpdf\Mpdf;
 use core\traits\{Questions,Category,Modal,Treatment,Company,Type,Defense,Answers,Results,ResultsInPDF};
+use core\XLS;
 
 class Administrator extends Model{
 	use Questions,Category,Modal,Treatment,Company,Type,Defense,Answers,Results,ResultsInPDF;
@@ -214,6 +215,62 @@ class Administrator extends Model{
 			$content = ob_get_clean();
 			$mpdf->WriteHTML($content);
 			$mpdf->Output();
+	}
+
+
+	public function getFile() {
+		$descr = $this->db->query("SELECT
+			r.id,
+			u.name,
+			u.lastname,
+			u.patron,
+			u.city,
+			u.address,
+			u.company,
+			u.position,
+			u.email,  
+			c.type AS type_company,
+			t.type AS type_treatment,
+			r.result,
+			r.description
+			FROM result r
+			INNER JOIN user u ON r.user = u.id
+			INNER JOIN company c ON u.type_company = c.id
+			INNER JOIN treatment t ON u.treatment_id = t.id ORDER BY r.id ASC");
+
+		while ($row = $descr->fetch(PDO::FETCH_ASSOC)) {
+			$description[] = $row;
+		}
+		$direct = $this->db->query("SELECT * FROM modal");
+		while ($row = $direct->fetch(PDO::FETCH_ASSOC)) {
+			$direct_list[$row['id']] = $row['name'];
+		}
+
+		$quest = $this->db->query("SELECT * FROM question");
+		while ($row = $quest->fetch(PDO::FETCH_ASSOC)) {
+			$quest_list[$row['id']] = [
+				'name' => $row['name'],
+				'category' =>  $row['category'],
+				'modal' =>  $row['modal']
+			];
+		}
+		$title = Array(
+			'id' => '№',
+			'name' => 'Имя',
+			'lastname' => 'Фамилия',
+			'patron' => 'Отчество',
+			'city' => 'Город',
+			'address' => 'Адрес',
+			'company' => 'Организация',
+			'position' => 'Должность',
+			'email' => 'E-mail',
+			'type_company' => 'Тип организации',
+			'type_treatment' => 'Вид лечения',
+			'result' => 'Результат',
+			'description' => 'Модальности',
+		);
+		$xls = new XLS($title);
+		$xls->getOnloadCSVResult($description,$direct_list,$quest_list);
 	}
 
 }

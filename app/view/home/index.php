@@ -5,10 +5,11 @@
         <div class="content">
           <h1>РЕЙТИНГ ОТДЕЛЕНИЙ ЛУЧЕВОЙ ДИАГНОСТИКИ от МРО РОРР</h1>
           <p class="slogan">Займите свое место среди лучших!</p>
+          <span class="button" style="max-width: 500px">Принять участие вы сможете в 2020 году</span>
           <?php if (!empty($_SESSION['id'])): ?>
-            <a href="/quests" class="button">Принять участие</a>
+            <!-- <a href="/quests" class="button">Принять участие</a> -->
             <?php else: ?>
-              <a href="#account" class="fancybox button">Принять участие</a>
+              <!-- <a href="#account" class="fancybox button">Принять участие</a> -->
             <?php endif ?>
           </div>
         </div>
@@ -54,14 +55,15 @@
         <div class="col-12">
           <h2 class="slogan">II Всероссийский независимый рейтинг отделений лучевой диагностики от МРО РОРР</h2>
           <div class="content">
-            <p>Вы и вся страна сможете увидеть уже 30 апреля 2019 года!</p><span>До публикации осталось:</span>
+            <p>Рейтинг завершен<br/>Результаты Вы и вся страна сможете увидеть уже скоро Следите за публикацией</p>
+            <!-- <span>До публикации осталось:</span>
             <ul>
               <li><span class="time day"></span><span class="descript">Дней</span></li>
               <li><span class="time hours"></span><span class="descript">Часов</span></li>
               <li><span class="time minuts"></span><span class="descript">Минут</span></li>
               <li><span class="time seconds"></span><span class="descript">Секунд</span></li>
-            </ul>
-            <span>Уже приняли участие:</span>
+            </ul> -->
+            <span>Приняли участие:</span>
             <div class="quan_rating"></div>
             <span>организаций</span>
           </div>
@@ -83,10 +85,11 @@
             <li class="opacity"><i class="quest"></i><span>Заполните анкету, ответив на вопросы. Это займет не более 10 минут</span></li>
             <li class="opacity"><i class="public"></i><span>Дождитесь публикации рейтинга 30 апреля на сайте</span></li>
           </ul>
+          <span class="button" style="max-width: 500px">Принять участие вы сможете в 2020 году</span>
           <?php if (!empty($_SESSION['id'])): ?>
-            <a href="/quests" class="button">Принять участие</a>
+           <!--  <a href="/quests" class="button">Принять участие</a> -->
             <?php else: ?>
-              <a href="#account" class="fancybox button">Принять участие</a>
+             <!--  <a href="#account" class="fancybox button">Принять участие</a> -->
             <?php endif ?>
           </div>
         </div>
@@ -111,10 +114,11 @@
             <div class="content"></div>
             <h2>Примите участие в рейтинге отделений лучевой диагностики<br/>прямо сейчас!</h2>
             <p class="center">Заявите о себе и займите свое место среди лучших!</p>
+            <span class="button" style="max-width: 500px">Принять участие вы сможете в 2020 году</span>
             <?php if (!empty($_SESSION['id'])): ?>
-              <a href="/quests" class="button">Принять участие</a>
+              <!-- <a href="/quests" class="button">Принять участие</a> -->
               <?php else: ?>
-                <a href="#account" class="fancybox button">Принять участие</a>
+                <!-- <a href="#account" class="fancybox button">Принять участие</a> -->
               <?php endif ?>
             </div>
           </div>

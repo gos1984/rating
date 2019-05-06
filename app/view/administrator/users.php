@@ -1,7 +1,20 @@
 <div class="row">
 	<div class="col-12">
-		<div class="content">
 			<?php if (!empty($data)): ?>
+				<div class="table">
+					<div class="tr">
+						<div class="td"><a href="/administrator/xls" class="btn btn-success">Скачать Результаты с модальностями</a></div>
+						<div class="td"></div>
+						<div class="td"></div>
+						<div class="td"></div>
+						<div class="td"></div>
+						<div class="td"></div>
+						<div class="td"></div>
+						<div class="td"></div>
+						<div class="td"></div>
+						<div class="td"></div>
+					</div>
+				</div>
 				<div class="table">
 					<div class="tr center">
 						<div class="th">№</div>
@@ -34,6 +47,5 @@
 				<?php else: ?>
 					<h3 class="center">Результатов нет</h3>
 				<?php endif ?>
-			</div>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8"/>
@@ -18,7 +18,7 @@
     <div class="container-fluid">
       <div class="row justify-content-between align-items-center">
         <div class="col-4 col-md-2 order-1">
-          <div class="logo"><a href="/"><img src="<?php echo PATH_TPL ?>/img/logo.png" alt=""></a></div>
+          <div class="logo"><a href="https://mrororr.ru/"><img src="<?php echo PATH_TPL ?>/img/logo.png" alt=""></a></div>
         </div>
         <div class="col-4 col-md-8 order-3 order-md-2">
             <nav class="main-menu">
@@ -28,6 +28,7 @@
                 <li><a href="<?php echo (URL == "/experts") ? '#experts' : '/experts#experts' ?>">Эксперты</a></li>
                <li><a href="<?php echo (URL == "/" || URL == "/experts") ? '#sec5' : '/#sec5' ?>">Методология</a></li>
                <li><a href="/total/2018">Итоги 2018</a></li>
+             <li><a href="/total/2019">Итоги 2019</a></li>
                <?php if (!empty($_SESSION['login'])): ?>
                  <li><a href="/quests">Анкета</a></li>
                <?php endif ?>

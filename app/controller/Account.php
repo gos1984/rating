@@ -49,6 +49,10 @@ class Account extends Controller{
 		$data = $this->model->entry();
 		$this->view->output("entry",$data);
 	}
+
+	public function mass() {
+		$data = $this->model->mass();
+	}
 }
 
 ?>

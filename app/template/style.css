@@ -7353,7 +7353,7 @@ button.close {
   overflow-y: auto;
 }
 
-.modal {
+.modal:not(td) {
   position: fixed;
   top: 0;
   right: 0;
@@ -12782,7 +12782,7 @@ hr {
   padding: 10px;
 }
 
-.table .table-row .table-cell {
+.table .table-row .table-cell, table tr td {
   display: table-cell;
   padding: 15px;
   text-align: center;
@@ -12827,7 +12827,7 @@ hr {
   padding: 9px;
 }
 
-.table .table-row .table-cell.modal {
+.table .table-row .table-cell.modal, #results table tr td.modal {
   text-align: left;
   padding-left: 5%;
 }
@@ -12838,7 +12838,7 @@ hr {
   text-align: left;
 }
 
-.table .table-row .table-cell.modal span.inline {
+.table .table-row .table-cell.modal span.inline, table tr td.modal span.inline {
   display: inline-block;
   text-align: left;
 }
@@ -13637,21 +13637,23 @@ hr {
   z-index: 10;
 }
 
-#results .table {
+#results table {
   width: 90%;
+  margin: 0 auto;
 }
 
-#results .table-row:not(:last-child) .table-cell {
+#results tr:not(:last-child) td {
   border-bottom: 1px solid #1e315b;
 }
 
-#results .table-cell {
+#results td {
   width: 25%;
   position: relative;
+  text-align: center;
   z-index: 0;
 }
 
-#results .table-row:not(.title):hover {
+#results tr:not(.title):hover {
   background: #f7f7f7;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -13661,7 +13663,7 @@ hr {
   background: #1e315b;
 }
 
-#results .title .table-cell {
+#results .title td {
   position: relative;
   height: auto;
   padding: 30px 0;
@@ -13672,7 +13674,7 @@ hr {
   color: #ffffff;
 }
 
-#results .title .table-cell:not(:last-child)::before {
+#results .title td:not(:last-child)::before {
   content: '';
   display: block;
   position: absolute;
@@ -13683,18 +13685,22 @@ hr {
   background: rgba(153, 153, 153, 0.2);
 }
 
-#results .title .table-cell.select span {
+#results .title td span{
+  font-family: roboto-bold;
+}
+
+#results .title td.select span {
   display: inline-block;
   padding: 10px 20px 10px 10px;
   position: relative;
   cursor: pointer;
 }
 
-#results .title .table-cell.selected {
+#results .title td.selected {
   height: 130px;
 }
 
-#results .title .table-cell.select span::before {
+#results .title td.select span::before {
   content: '';
   display: block;
   position: absolute;
@@ -13708,13 +13714,12 @@ hr {
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
-
-#results .title .table-cell:last-child {
+#results .title td:last-child {
   text-align: left;
   padding-left: 5%;
 }
 
-#results .title .table-cell.select.selected span::before {
+#results .title td.select.selected span::before {
   -webkit-transform: rotateX(180deg);
   transform: rotateX(180deg);
 }
@@ -13781,11 +13786,11 @@ hr {
     top: 0;
   }
 
-  #results .title .table-cell.selected span {
+  #results .title td.selected span {
     height: 60px;
   }
 
-  #results .table-cell {
+  #results td {
     font-size: 14px;
   }
 

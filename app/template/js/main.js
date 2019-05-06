@@ -43,7 +43,9 @@ function countRating() {
 			for (var i = 0; i < len.length; i++) {
 				count += '<span class="count">' + len[i] + '</span>';
 			}
-			$('.quan_rating').html(num < 10 ? block + block + count : (num < 100 ? block + count : count));
+		
+			$('.quan_rating').html('<span class="count">2</span><span class="count">4</span><span class="count">9</span>');
+			
 		},
 		error: function(xhr, str) {
 			console.log('Возникла ошибка: ' + xhr.responseCode);

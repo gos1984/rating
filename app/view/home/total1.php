@@ -1,11 +1,12 @@
+
 <section id="results">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <h1>Список лучших отделений<br/> лучевой диагностики по результатам <br/>Всероссийского рейтинга-<?=$data['year']?></h1>
-        <p class="slogan">В соответствии с методологией в рейтинг включены все отделения,<br/>
-          результаты анкетирования которых оказались выше <?=$data['score']?> баллов (среднего значения по результатам анкетирования всех участников).</p>
-          <p class="slogan">В списке отделения расположены в алфавитном порядке без ранжирования по баллам.</p>
+        <h1>Рейтинг отделений<br/> лучевой диагностики <?=$data['year']?></h1>
+        <p class="slogan">30 апреля 2019 года в соответствии с методологией рейтинга <br> опубликованы предварительные результаты автоматической программной проверки.</p>
+          <p class="slogan">В списке отделения расположены в алфавитном порядке без ранжирования по баллам.<br> 
+Финальные результаты рейтинга будут опубликованы 20 мая 2019 года после верификации и экспертизы результатов.</p>
           <div class="reset_block">
             <button class="reset">Сбросить</button>
           </div>
@@ -31,10 +32,13 @@
                 <select class="search" name="city" id="city" multiple="multiple">
                   <option value="reset">---сброс---</option>
                   <?php //foreach ($title1['city'] as $city): ?>
-                  <option value="<?php //echo $city; ?>"><?php echo $city; ?></option>
+                  <option value="<?php //echo $city; ?>"><?php //echo $city; ?></option>
                   <?php //endforeach ?>
                 </select>
               </td>
+              <td class="select">
+               <span>Набранные баллы</span>
+             </td>
               <td class="select">
                 <span>Модальность</span>
 
@@ -58,6 +62,7 @@
                         <td class="company left"><?php echo $val['company']; ?></td>
                         <td class="type_company"><?php echo $data['company'][$val['type_company']]; ?></td>
                         <td class="city"><?php echo trim(str_replace('СПб','Санкт-Петербург', preg_replace('/^(г\.|Г\.|\w{1,})/', '', $val['city']))); ?></td>
+                        <td class="modal"><?php echo $val['ball']; ?></td>
                         <td class="modal"><?php echo $val['modal']; ?></td>
                       </tr>
                     <?php endif ?>
