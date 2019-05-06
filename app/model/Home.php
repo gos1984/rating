@@ -27,7 +27,7 @@ class Home extends Model{
 				'year' => $year,
 				'score' => $this->db->query("SELECT score FROM total WHERE year = $year")->fetchColumn(),
 			);
-			$t = $this->db->query("SELECT * FROM total_description WHERE year = $year");
+			$t = $this->db->query("SELECT * FROM total_description WHERE year = $year ORDER BY ball DESC");
 			while($row = $t->fetch(PDO::FETCH_ASSOC)) {
 				$total['description'][] = $row;
 				if(!empty($row['nomination'])) {
